@@ -77,14 +77,17 @@ def main(list_url):
         input(">>> ログインが終わったらEnterを押してください...")
 
         # 2. 記事URLの一覧を取得
-        article_urls = get_article_urls(driver, list_url)
+        #article_urls = get_article_urls(driver, list_url)
 
         # 3. 各記事を順番に保存
-        for index, url in enumerate(article_urls):
-            print(f"\n[{index + 1}/{len(article_urls)}] 処理を開始します...")
-            save_note_manual_trigger(driver, url)
-            time.sleep(2)  # サーバー負荷軽減のための待機
+        #for index, url in enumerate(article_urls):
+        #    print(f"\n[{index + 1}/{len(article_urls)}] 処理を開始します...")
+        #    save_note_manual_trigger(driver, url)
+        #    time.sleep(2)  # サーバー負荷軽減のための待機
 
+        print(f"単体で処理を開始します...")
+        save_note_manual_trigger(driver, list_url)
+        time.sleep(2)  # サーバー負荷軽減のための待機
         print("\nすべての記事の処理が完了しました。")
 
     finally:
@@ -92,6 +95,6 @@ def main(list_url):
         input()
         driver.quit()
 
-# 実行（対象の一覧ページURLを指定してください）
-target_list_url = "https://note.com/papapico/m/m136d21e477d9" 
+# 実行（対象の単独URLを指定してください）
+target_list_url = "https://note.com/papapico/n/ne0a76e475d78?magazine_key=m6a8711e9d494&from=membership-magazine" 
 main(target_list_url)
